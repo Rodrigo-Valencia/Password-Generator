@@ -15,3 +15,4 @@ For employees with access to sensitive data. Randomly generated password that me
 [Link to the deployed website](https://rodvalencia2319.github.io/Password-Generator/)
 
 ### Reference 
+![Screenshot of index.html](./assets/images/reference-img.png)
