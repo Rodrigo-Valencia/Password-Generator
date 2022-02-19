@@ -8,6 +8,11 @@ var specialCharacters = ['!' , '"' , '#' , '$' , '%' , '&' , "'" , '(' , ')' , '
 
 function createPassword() {
     var length = prompt("Password length must be between 8 and 128 characters.");
+    if ((length < 8) || (length > 128)) {
+        alert("Password length must be between 8 and 128 characters.");
+        createPassword();
+    }
+
     var confirmNumbers = confirm("Do you want your password to include numbers?");
     var confirmLowerCase = confirm("Do you want your password to include lowercase letters?");
     var confirmUpperCase = confirm("Do you want your password to include uppercase letters?");
@@ -19,13 +24,12 @@ function createPassword() {
         confirmUpperCase: confirmUpperCase,
         confirmSpecialCharacters: confirmSpecialCharacters
     }
-
-    if ((length < 8) || (length > 128)) {
-        alert("Password length must be between 8 and 128 characters.");
-    }
-    else if ((!confirmNumbers) && (!confirmLowerCase) && (!confirmUpperCase) && (!confirmSpecialCharacters)) {
+    if ((!confirmNumbers) && (!confirmLowerCase) && (!confirmUpperCase) && (!confirmSpecialCharacters)) {
         alert("Password must include at least one type.");
+        
     }
+    
+
     return responses;
 } 
 
@@ -44,12 +48,12 @@ function generatePassword() {
             possibleCombo.push(i);
         }
     };
-    if (possibleCombo.confrimUpperCase) {
+    if (passwordChoices.confirmUpperCase) {
         for (var i of upperCase){
             possibleCombo.push(i);
         }
     };
-    if (possibleCombo.confirmSpecialCharacters) {
+    if (passwordChoices.confirmSpecialCharacters) {
         for (var i of specialCharacters){
             possibleCombo.push(i);
         }
@@ -58,7 +62,7 @@ function generatePassword() {
     for (var i = 0; i < passwordChoices.length; i++) {
         finalPassword += possibleCombo[Math.floor(Math.random() * possibleCombo.length)];
     }
-    
+
     return finalPassword;
 }
 
